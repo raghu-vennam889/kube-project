@@ -28,7 +28,7 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.devopsdoor.com" ]){
                 sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-frontend:"$BUILD_NUMBER"'
                 sh 'docker tag sa-webapp:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-webapp:"$BUILD_NUMBER"'
                 sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-logic:"$BUILD_NUMBER"'
@@ -43,7 +43,7 @@ pipeline {
                 branch 'master'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.devopsdoor.com" ]){
                 sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-frontend:"$BUILD_NUMBER"'
                 sh 'docker tag sa-webapp:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-webapp:"$BUILD_NUMBER"'
                 sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-logic:"$BUILD_NUMBER"'

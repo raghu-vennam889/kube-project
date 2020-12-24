@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Deploy to Prod Cluster'){
             when {
-                branch 'develop'
+                branch 'master'
                 }
             steps {
                 sh 'cd ${WORKSPACE}/resource-manifests-prod/ && kubectl apply -f .'

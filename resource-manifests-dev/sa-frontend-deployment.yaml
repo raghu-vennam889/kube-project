@@ -22,9 +22,9 @@ spec:
         app: sa-frontend                                  # 6
     spec:
       imagePullSecrets:
-      - name: postelicred
+      - name: harborcred
       containers:
-        - image: harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.0
+        - image: harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.1
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

@@ -22,9 +22,9 @@ spec:
         app: sa-web-app
     spec:
       imagePullSecrets:
-      - name: postelicred
+      - name: harborcred
       containers:
-      - image: harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.0
+      - image: harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.1
         imagePullPolicy: Always
         name: sa-web-app
         env:

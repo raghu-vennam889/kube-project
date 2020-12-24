@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sa-logic
+  namespace: devopsdoor-prod
+  labels:
+    app: sa-logic
+spec:
+  selector:
+     matchLabels:
+       app: sa-logic
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: sa-logic
+    spec:
+      imagePullSecrets:
+      - name: harborcred
+      containers:
+        - image: harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.1
+          imagePullPolicy: Always
+          name: sa-logic
+          ports:
+            - containerPort: 5000

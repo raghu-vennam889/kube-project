@@ -1,9 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy to Dev') {
+        stage('Deploy to Dev Cluster'){
+            when {
+                branch 'develop'
+                }
             steps {
-                sh 'cd ${WORKSPACE}/resource-manifests-dev/ && kubectl apply -f .'
+                sh 'cd ${WORKSPACE}/resource-manifests-prod/ && kubectl apply -f .'
+
+            }
+        }
+        stage('Deploy to Prod Cluster'){
+            when {
+                branch 'develop'
+                }
+            steps {
+                sh 'cd ${WORKSPACE}/resource-manifests-prod/ && kubectl apply -f .'
 
             }
         }

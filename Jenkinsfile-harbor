@@ -12,13 +12,13 @@ pipeline {
         stage('Build Images') {
             steps {
                 sh 'echo "Creating fronted Image"'
-                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t sa-frontend:"$BUILD_NUMBER" .'
+                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t sa-frontend:1.0.0 .'
                 sh 'echo "Frontend Image created"'
                 sh 'echo "Creating webapp Image"'
-                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t sa-webapp:"$BUILD_NUMBER" .'
+                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t sa-webapp:1.0.0 .'
                 sh 'echo "Webapp Image Created"'
                 sh 'echo "Creating sa-logic image"'
-                sh 'cd ${WORKSPACE}/sa-logic && docker build -t sa-logic:"$BUILD_NUMBER" .'
+                sh 'cd ${WORKSPACE}/sa-logic && docker build -t sa-logic:1.0.0 .'
                 sh 'echo "sa-logic image created"'
 
             }
@@ -28,13 +28,13 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-frontend:"$BUILD_NUMBER"'
-                sh 'docker tag sa-webapp:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-webapp:"$BUILD_NUMBER"'
-                sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd_dev/sa-logic:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-frontend:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-webapp:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-logic:"$BUILD_NUMBER"'
+                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.postelic.com" ]){
+                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-frontend:1.0.0'
+                sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-dev/sa-webapp:1.0.0'
+                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-logic:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-dev/sa-frontend:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-dev/sa-webapp:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-dev/sa-logic:1.0.0'
                 }
             }
         }
@@ -43,13 +43,13 @@ pipeline {
                 branch 'master'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-frontend:"$BUILD_NUMBER"'
-                sh 'docker tag sa-webapp:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-webapp:"$BUILD_NUMBER"'
-                sh 'docker tag sa-frontend:"$BUILD_NUMBER" harbor.devopsdoor.com/cicd-prod/sa-logic:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-frontend:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-webapp:"$BUILD_NUMBER"'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-logic:"$BUILD_NUMBER"'
+                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.postelic.com" ]){
+                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-frontend:1.0.0'
+                sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-prod/sa-webapp:1.0.0'
+                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-logic:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-prod/sa-frontend:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-prod/sa-webapp:1.0.0'
+                sh 'docker push harbor.postelic.com/harbor-prod/sa-logic:1.0.0'
                 }
             }
         }

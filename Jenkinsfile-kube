@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+        stage('Deploy to Dev') {
+            steps {
+                sh 'cd ${WORKSPACE}/resource-manifests-dev/ && kubectl apply -f .'
+
+            }
+        }
+    }
+}

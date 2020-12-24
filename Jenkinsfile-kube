@@ -6,7 +6,7 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                sh 'cd ${WORKSPACE}/resource-manifests-prod/ && kubectl apply -f .'
+                sh 'cd ${WORKSPACE}/resource-manifests-dev/ && kubectl apply -f .'
 
             }
         }

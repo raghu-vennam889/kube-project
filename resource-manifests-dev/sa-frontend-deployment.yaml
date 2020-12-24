@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: harborcred
       containers:
-        - image: harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.1
+        - image: harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.2
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

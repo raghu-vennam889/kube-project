@@ -12,13 +12,13 @@ pipeline {
         stage('Build Images') {
             steps {
                 sh 'echo "Creating fronted Image"'
-                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t sa-frontend:1.0.1 .'
+                sh 'cd ${WORKSPACE}/sa-frontend && docker build -t sa-frontend:1.0.2 .'
                 sh 'echo "Frontend Image created"'
                 sh 'echo "Creating webapp Image"'
-                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t sa-webapp:1.0.1 .'
+                sh 'cd ${WORKSPACE}/sa-webapp && docker build -t sa-webapp:1.0.2 .'
                 sh 'echo "Webapp Image Created"'
                 sh 'echo "Creating sa-logic image"'
-                sh 'cd ${WORKSPACE}/sa-logic && docker build -t sa-logic:1.0.1 .'
+                sh 'cd ${WORKSPACE}/sa-logic && docker build -t sa-logic:1.0.2 .'
                 sh 'echo "sa-logic image created"'
 
             }
@@ -29,12 +29,12 @@ pipeline {
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag sa-frontend:1.0.1 harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.1'
-                sh 'docker tag sa-webapp:1.0.1 harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.1'
-                sh 'docker tag sa-frontend:1.0.1 harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.1'
+                sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.2'
+                sh 'docker tag sa-webapp:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.2'
+                sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.2'
                 }
             }
         }
@@ -44,12 +44,12 @@ pipeline {
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
-                sh 'docker tag sa-frontend:1.0.1 harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.1'
-                sh 'docker tag sa-webapp:1.0.1 harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.1'
-                sh 'docker tag sa-frontend:1.0.1 harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.1'
-                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.1'
+                sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.2'
+                sh 'docker tag sa-webapp:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.2'
+                sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.2'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.2'
                 }
             }
         }

@@ -28,7 +28,7 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.postelic.com" ]){
+                withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.postelic.com" ]){
                 sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-frontend:1.0.0'
                 sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-dev/sa-webapp:1.0.0'
                 sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-logic:1.0.0'
@@ -43,7 +43,7 @@ pipeline {
                 branch 'master'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor_id", url: "https://harbor.postelic.com" ]){
+                withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.postelic.com" ]){
                 sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-frontend:1.0.0'
                 sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-prod/sa-webapp:1.0.0'
                 sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-logic:1.0.0'

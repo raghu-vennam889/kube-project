@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: postelicred
       containers:
-        - image: harbor.postelic.com/harbor-prod/sa-frontend:1.0.0
+        - image: harbor.postelic.com/harbor-dev/sa-frontend:1.0.0
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: postelicred
       containers:
-        - image: harbor.postelic.com/harbor-prod/sa-logic:1.0.0
+        - image: harbor.postelic.com/harbor-dev/sa-logic:1.0.0
           imagePullPolicy: Always
           name: sa-logic
           ports:

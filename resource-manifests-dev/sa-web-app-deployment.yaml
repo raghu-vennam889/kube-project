@@ -21,8 +21,10 @@ spec:
       labels:
         app: sa-web-app
     spec:
+      imagePullSecrets:
+      - name: postelicred
       containers:
-      - image: basilvarghese/sa-webapp:2.0.0
+      - image: harbor.postelic.com/harbor-prod/sa-webapp:1.0.0
         imagePullPolicy: Always
         name: sa-web-app
         env:

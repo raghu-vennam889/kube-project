@@ -21,10 +21,10 @@ spec:
       labels:
         app: sa-frontend                                  # 6
     spec:
+      imagePullSecrets:
+      - name: postelicred
       containers:
-        - image: basilvarghese/sa-frontend:2.0.0
-          imagePullSecrets:
-            name: postelicred
+        - image: harbor.postelic.com/harbor-prod/sa-frontend:1.0.0
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

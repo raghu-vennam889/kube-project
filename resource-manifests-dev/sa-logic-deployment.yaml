@@ -21,8 +21,10 @@ spec:
       labels:
         app: sa-logic
     spec:
+      imagePullSecrets:
+      - name: postelicred
       containers:
-        - image: basilvarghese/sa-logic:2.0.0
+        - image: harbor.postelic.com/harbor-prod/sa-logic:1.0.0
           imagePullPolicy: Always
           name: sa-logic
           ports:

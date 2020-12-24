@@ -28,13 +28,13 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.postelic.com" ]){
-                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-frontend:1.0.0'
-                sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-dev/sa-webapp:1.0.0'
-                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-dev/sa-logic:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-dev/sa-frontend:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-dev/sa-webapp:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-dev/sa-logic:1.0.0'
+                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                sh 'docker tag sa-frontend:1.0.0 harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.0'
+                sh 'docker tag sa-webapp:1.0.0 harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.0'
+                sh 'docker tag sa-frontend:1.0.0 harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.0'
                 }
             }
         }
@@ -43,13 +43,13 @@ pipeline {
                 branch 'master'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.postelic.com" ]){
-                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-frontend:1.0.0'
-                sh 'docker tag sa-webapp:1.0.0 harbor.postelic.com/harbor-prod/sa-webapp:1.0.0'
-                sh 'docker tag sa-frontend:1.0.0 harbor.postelic.com/harbor-prod/sa-logic:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-prod/sa-frontend:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-prod/sa-webapp:1.0.0'
-                sh 'docker push harbor.postelic.com/harbor-prod/sa-logic:1.0.0'
+                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                sh 'docker tag sa-frontend:1.0.0 harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.0'
+                sh 'docker tag sa-webapp:1.0.0 harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.0'
+                sh 'docker tag sa-frontend:1.0.0 harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.0'
+                sh 'docker push harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.0'
                 }
             }
         }

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment                                          # 1
 metadata:
   name: sa-frontend
+  namespace: devopsdoor-dev
   labels:
     app: sa-frontend
 spec:
@@ -20,8 +21,10 @@ spec:
       labels:
         app: sa-frontend                                  # 6
     spec:
+      imagePullSecrets:
+      - name: harborcred
       containers:
-        - image: basilvarghese/sa-frontend:2.0.0
+        - image: harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.1
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

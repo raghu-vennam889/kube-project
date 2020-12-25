@@ -24,9 +24,7 @@ pipeline {
             }
         }
         stage('push to harbor-dev'){
-            when {
-                branch 'develop'
-                }
+            
             steps {
                 withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.devopsdoor.com" ]){
                 sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.2'

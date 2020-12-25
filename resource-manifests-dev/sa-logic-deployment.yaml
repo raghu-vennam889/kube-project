@@ -24,7 +24,7 @@ spec:
       imagePullSecrets:
       - name: harborcred
       containers:
-        - image: harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.2
+        - image: harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.3
           imagePullPolicy: Always
           name: sa-logic
           ports:

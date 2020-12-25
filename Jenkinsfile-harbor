@@ -28,7 +28,7 @@ pipeline {
                 branch 'develop'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                withDockerRegistry(credentialsId: 'harbor', url: 'https://harbor.devopsdoor.com'){
                 sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-frontend:1.0.2'
                 sh 'docker tag sa-webapp:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-webapp:1.0.2'
                 sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd_dev/sa-logic:1.0.2'
@@ -43,7 +43,7 @@ pipeline {
                 branch 'master'
                 }
             steps {
-                withDockerRegistry([ credentialsId: "harbor-cred", url: "https://harbor.devopsdoor.com" ]){
+                withDockerRegistry(credentialsId: 'harbor', url: 'https://harbor.devopsdoor.com'){
                 sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-frontend:1.0.2'
                 sh 'docker tag sa-webapp:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-webapp:1.0.2'
                 sh 'docker tag sa-frontend:1.0.2 harbor.devopsdoor.com/cicd-prod/sa-logic:1.0.2'

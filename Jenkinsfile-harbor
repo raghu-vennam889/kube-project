@@ -25,7 +25,7 @@ pipeline {
         }
         stage('push to harbor-dev'){
             when {
-                branch 'master'
+                branch 'choice'
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.devopsdoor.com" ]){
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('push to harbor-prod'){
             when {
-                branch 'develop'
+                branch 'choice'
                 }
             steps {
                 withDockerRegistry([ credentialsId: "harbor", url: "https://harbor.devopsdoor.com" ]){

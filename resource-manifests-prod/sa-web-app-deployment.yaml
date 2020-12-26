@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sa-web-app
-  namespace: devopsdoor-prod
+  namespace: prod-namespace
   labels:
     app: sa-web-app
 spec:

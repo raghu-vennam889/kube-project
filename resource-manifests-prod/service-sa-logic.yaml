@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sa-logic
-  namespace: devopsdoor-prod
+  namespace: prod-namespace
 spec:
   ports:
     - port: 80

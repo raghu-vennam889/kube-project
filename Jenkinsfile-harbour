@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+    stage('') {
+      steps {
+        sh 'sh \'echo "create jenkins file"\''
+      }
+    }
+
+    stage('rr') {
+      steps {
+        sh 'sh \'echo "this is raghu"\''
+      }
+    }
+
+  }
+}
